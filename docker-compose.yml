@@ -1,0 +1,54 @@
+version: '3.4'
+
+services:
+  proxyserver:
+    image: ${DOCKER_REGISTRY-}proxyserver
+    build:
+      context: .
+      dockerfile: ProxyServer/Dockerfile
+    ports:
+      - "7176:8080"
+      - "7177:8081"
+    depends_on:
+      - redis
+      - postgres 
+
+  postgres:
+    image: postgres
+    container_name: postgres 
+    environment:
+      - POSTGRES_DB=ProxyServerData
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+      
+  redis: 
+    image: redis:latest 
+    container_name: redis_container 
+    environment: 
+      - REDIS_PASSWORD=my_redis_password 
+      - REDIS_USER=my_user 
+      - REDIS_USER_PASSWORD=my_user_password 
+    ports: 
+      - "6379:6379"
+      - "6380:6380" 
+    volumes: 
+      - .redisdata:/data 
+    deploy: 
+      resources: 
+        limits: 
+          cpus: '0.50' 
+          memory: 512M 
+        reservations: 
+          cpus: '0.25' 
+          memory: 256M 
+    healthcheck: 
+      test: ["CMD", "redis-cli", "-a", "$REDIS_PASSWORD", "ping"] 
+      interval: 30s 
+      timeout: 10s 
+      retries: 5 
+    restart: unless-stopped 
+    tty: true 
+    stdin_open: true 
+
