@@ -22,6 +22,8 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
       
   redis: 
     image: redis:latest 
@@ -34,21 +36,14 @@ services:
       - "6379:6379"
       - "6380:6380" 
     volumes: 
-      - .redisdata:/data 
-    deploy: 
-      resources: 
-        limits: 
-          cpus: '0.50' 
-          memory: 512M 
-        reservations: 
-          cpus: '0.25' 
-          memory: 256M 
-    healthcheck: 
-      test: ["CMD", "redis-cli", "-a", "$REDIS_PASSWORD", "ping"] 
-      interval: 30s 
-      timeout: 10s 
-      retries: 5 
-    restart: unless-stopped 
+      - .redisdata:/data
     tty: true 
     stdin_open: true 
+
+  react-app:
+    build:
+      context: 
+        ./ReactClientProxy/proxyClient
+    ports:
+      - "3000:80"
 
