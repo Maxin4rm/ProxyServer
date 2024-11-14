@@ -12,8 +12,8 @@ services:
     volumes:
       - ./certs:/https:ro 
     environment:
-      - ASPNETCORE_KestrelCertificatesDefault__Path=/https/server2.crt
-      - ASPNETCORE_KestrelCertificatesDefault__KeyPath=/https/server2.key
+      - ASPNETCORE_KestrelCertificatesDefault__Path=/https/servercert.crt
+      - ASPNETCORE_KestrelCertificatesDefault__KeyPath=/https/servercert.key
     depends_on:
       - redis
       - postgres 
