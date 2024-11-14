@@ -49,6 +49,6 @@ services:
     image: react-app
     build:
       context: 
-        ./ReactClientProxy/proxyClient
+        ./proxyClient
     ports:
       - "3000:80"
