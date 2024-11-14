@@ -9,6 +9,11 @@ services:
     ports:
       - "7176:8080"
       - "7177:8081"
+    volumes:
+      - ./certs:/https:ro 
+    environment:
+      - ASPNETCORE_KestrelCertificatesDefault__Path=/https/server2.crt
+      - ASPNETCORE_KestrelCertificatesDefault__KeyPath=/https/server2.key
     depends_on:
       - redis
       - postgres 
@@ -41,9 +46,9 @@ services:
     stdin_open: true 
 
   react-app:
+    image: react-app
     build:
       context: 
-        ./proxyClient
+        ./ReactClientProxy/proxyClient
     ports:
       - "3000:80"
-
