@@ -39,10 +39,21 @@ services:
     tty: true 
     stdin_open: true 
 
-  react-app:
-    image: react-app
+  api-client:
+    image: api-client
     build:
       context: 
         ./proxyClient
     ports:
-      - "3000:80"
+      - "3001:80"
+
+  react-app:
+    build:
+      context: ./web_test
+      dockerfile: Dockerfile
+    container_name: react_app
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./web_test/.env
+    restart: unless-stopped
