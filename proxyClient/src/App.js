@@ -8,7 +8,7 @@ const App = () => {
 
   const handlePostRequest = async () => {
     try {
-      const response = await axios.post(`https://localhost:7177/api/ProxyAccess?key=${key}&value=${value}`);
+      const response = await axios.post(`http://localhost:7176/api/ProxyAccess?key=${key}&value=${value}`);
       console.log('POST response:', response.data);
     } catch (error) {
       console.error('Error during POST request:', error);
@@ -17,7 +17,7 @@ const App = () => {
 
   const handleGetRequest = async () => {
     try {
-      const response = await axios.get('https://localhost:7177/api/ProxyAccess');
+      const response = await axios.get('http://localhost:7176/api/ProxyAccess');
       setData(response.data);
     } catch (error) {
       console.error('Error during GET request:', error);
