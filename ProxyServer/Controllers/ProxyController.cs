@@ -4,7 +4,7 @@ using System.Net.Http;
 
 namespace ProxyServer.Controllers;
 
-[Route("api/[controller]")]
+[Route("arcservertest/rest/services")]
 [ApiController]
 public class ProxyController : ControllerBase
 {
