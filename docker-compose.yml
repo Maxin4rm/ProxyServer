@@ -8,11 +8,6 @@ services:
       dockerfile: ProxyServer/Dockerfile
     ports:
       - "7176:8080"
-    volumes:
-      - ./certs:/https:ro 
-    environment:
-      - ASPNETCORE_KestrelCertificatesDefault__Path=/https/servercert.crt
-      - ASPNETCORE_KestrelCertificatesDefault__KeyPath=/https/servercert.key
     depends_on:
       - redis
       - postgres 
