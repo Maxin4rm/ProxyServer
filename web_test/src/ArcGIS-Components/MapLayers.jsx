@@ -12,7 +12,7 @@ const MapLayers = ({map}) => {
     }
 
     const layer = new FeatureLayer({
-        url: "http://localhost:7176/api/proxy/A06_ATE_TE_WGS84/ATE_Minsk_public/MapServer/1",
+        url: "http://localhost:7176/arcservertest/rest/services/A06_ATE_TE_WGS84/ATE_Minsk_public/MapServer/1",
         title: "Населенные пункты",
         visible: true,
         outFields: ["ADMINOTE", "Rajon"],
@@ -25,7 +25,7 @@ const MapLayers = ({map}) => {
     }
     
     const landPlotLayer =new FeatureLayer({
-        url: "http://localhost:7176/api/proxy/A05_EGRNI_WGS84/Uchastki_Minsk_public/MapServer/0",
+        url: "http://localhost:7176/arcservertest/rest/services/A05_EGRNI_WGS84/Uchastki_Minsk_public/MapServer/0",
         title: "Земельные участки",
         outFields: ["SQ", "CADNUM", "SHAPE_Area"],
         popupTemplate: landPlotCover,
@@ -38,7 +38,7 @@ const MapLayers = ({map}) => {
     }
 
     const landCoverLayer = new FeatureLayer({
-        url: "http://localhost:7176/api/proxy/A01_ZIS_WGS84/Land_Minsk_public/MapServer/0",
+        url: "http://localhost:7176/arcservertest/rest/services/A01_ZIS_WGS84/Land_Minsk_public/MapServer/0",
         outFields: ["LandType"],
         popupTemplate: popupLandCover,
         title: "Виды земель",
