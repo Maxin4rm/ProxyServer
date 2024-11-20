@@ -17,7 +17,7 @@ const MyMap = ({onChange}) => {
         if (!mapRef?.current) return;
 
         const imageTileLayer = new TileLayer({
-            url: "https://localhost:7177/api/proxy/C01_Belarus_WGS84/Belarus_BaseMap_WGS84/MapServer"
+            url: "http://localhost:7176/api/proxy/C01_Belarus_WGS84/Belarus_BaseMap_WGS84/MapServer"
         });
 
         const basemap = new Basemap({
