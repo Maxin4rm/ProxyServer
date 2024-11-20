@@ -8,7 +8,6 @@ services:
       dockerfile: ProxyServer/Dockerfile
     ports:
       - "7176:8080"
-      - "7177:8081"
     volumes:
       - ./certs:/https:ro 
     environment:
