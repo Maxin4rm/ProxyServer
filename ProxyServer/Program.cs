@@ -46,7 +46,6 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
         app.UseCors("AllowSpecificOrigin");
         app.UseAuthorization();
         app.MapControllers();
